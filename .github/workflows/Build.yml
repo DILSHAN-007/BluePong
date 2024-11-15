@@ -19,8 +19,8 @@ jobs:
     - name: Set up JDK 11 (Zulu)
       uses: actions/setup-java@v2
       with:
-        java-version: '11'          # JDK version 11 use karein
-        distribution: 'zulu'        # Zulu OpenJDK distribution use karein
+        java-version: '11'
+        distribution: 'zulu'
 
     - name: Set up Gradle
       uses: gradle/gradle-build-action@v2
@@ -28,4 +28,4 @@ jobs:
         gradle-version: '7.0.2'
 
     - name: Build AAB and APK
-      run: ./gradlew build bundleRelease
+      run: gradle build bundleRelease  # Directly Gradle command run kar rahe hain
