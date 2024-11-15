@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <style>
+        /* General page styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+          position: relative;
+            font-family: 'Roboto', sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .background {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 0, 255, 0.2) 10%, transparent 60%);
+            animation: pulse 6s infinite alternate;
+            z-index: -1;
+            filter: blur(20px);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.9); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.8; }
+            100% { transform: scale(0.9); opacity: 1; }
+        }
+
+        .game-container {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+        }
+
+        .title {
+            font-size: 56px;
+            font-weight: bold;
+            color: #00e6e6;
+            text-shadow: 0 0 20px #00e6e6, 0 0 40px #00e6e6;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 15px;
+            font-size: 20px;
+            color: #fff;
+            background: linear-gradient(45deg, #00f, #0ff);
+            border: none;
+            border-radius: 50px;
+            text-shadow: 0 0 10px #00f;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .button:hover {
+            background: linear-gradient(45deg, #0ff, #00f);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px #0ff, 0 0 30px #00f;
+        }
+    </style>
+</head>
+<body>
+    <div class="background"></div>
+    <div class="game-container">
+        <h1 class="title">Blue Pong</h1>
+        <button class="button" onclick="startGame()">Play</button>
+        <button class="button" onclick="shareGame()">Share</button>
+    </div>
+
+    <script>
+        function startGame() {
+            location.href = "game.html";
+        }
+        function shareGame() {
+            alert("Share this game with your friends!");
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Pong Game</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 600px;
+            background: black;
+            overflow: hidden;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        #pongCanvas {
+          margin-top:20px;
+          margin-left:10px;
+            border: 2px solid cyan;
+            box-shadow: 0 0 20px cyan;
+            background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(25,25,25,1) 100%);
+            width: calc(100% - 10px);
+            height: calc(100% - 150px);
+            max-width: 600px;
+            max-height: 800px;
+        }
+        #control-buttons {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+        .control-button {
+            background: transparent;
+            color: cyan;
+            border: 2px solid cyan;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            margin: 0 50px;
+            margin-top: 10px;
+        }
+        #score-animation {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            color: #FFFFFF; /* Bright color for contrast */
+            font-size: 1em;
+            opacity: 0;
+            pointer-events: none;
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+            font-weight: bold;
+        }
+        #high-score, #current-score {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: cyan;
+            font-size: 1.2em;
+        }
+        #current-score {
+            top: 50px; /* Place below the high score */
+        }
+        #game-over {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: red;
+            font-size: 2em;
+            display: none;
+        }
+        #restart-button {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: transparent;
+            color: cyan;
+            border: 2px solid cyan;
+            padding: 10px 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            display: none;
+        }
+     
+    </style>
+</head>
+<body>
+    <canvas id="pongCanvas" width="600" height="800"></canvas>
+    <div id="control-buttons">
+        <button id="left-button" class="control-button">Left</button>
+        <button id="right-button" class="control-button">Right</button>
+    </div>
+    <div id="score-animation"></div>
+    <div id="high-score">High Score: 0</div>
+    <div id="current-score">Score: 0</div>
+    <div id="game-over">Game Over</div>
+    <button id="restart-button" onclick="restart()">Restart Game</button>
+    <audio id="collision-sound" src="collide.mp3"></audio>
+      <audio id="gameover-sound" src="gameover.mp3"></audio>
+<script src="game.js"></script>
+
+</body>
+</html>
