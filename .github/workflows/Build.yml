@@ -27,5 +27,8 @@ jobs:
       with:
         gradle-version: '7.0.2'
 
+    - name: Make gradlew executable
+      run: chmod +x gradlew
+
     - name: Build AAB and APK
-      run: gradle build bundleRelease  # Directly Gradle command run kar rahe hain
+      run: ./gradlew bundleRelease
