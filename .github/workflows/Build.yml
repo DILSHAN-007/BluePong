@@ -1,0 +1,31 @@
+name: Build APK and AAB
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up JDK 11 (Zulu)
+      uses: actions/setup-java@v2
+      with:
+        java-version: '11'          # JDK version 11 use karein
+        distribution: 'zulu'        # Zulu OpenJDK distribution use karein
+
+    - name: Set up Gradle
+      uses: gradle/gradle-build-action@v2
+      with:
+        gradle-version: '7.0.2'
+
+    - name: Build AAB and APK
+      run: ./gradlew build bundleRelease
