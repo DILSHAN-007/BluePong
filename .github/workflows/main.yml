@@ -1,0 +1,45 @@
+name: Build APK and AAB
+
+on:
+  push:
+    branches:
+      - main  # Ya apni specific branch ka naam daalein
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Ya apne platform ke hisaab se platform select karein
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up JDK 11 (Required for Android)
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'  # JDK version (ensure this matches your project's requirements)
+
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v2
+      with:
+        sdk-version: '30'  # Ya apne required Android SDK version ka use karein
+
+    - name: Cache Gradle dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.gradle/caches
+        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+        restore-keys: |
+          ${{ runner.os }}-gradle-
+
+    - name: Build APK and AAB
+      run: |
+        ./gradlew assembleRelease   # APK build karega
+        ./gradlew bundleRelease     # AAB build karega
+
+    - name: Upload APK and AAB as artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: apk-and-aab
+        path: |
+          app/build/outputs/apk/release/*.apk
+          app/build/outputs/bundle/release/*.aab
