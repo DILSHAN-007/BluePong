@@ -1,0 +1,8 @@
+{
+    "zipViewer.textFileAssociations": [
+        {
+            "zipPath": "/BluePong.zip",
+            "subfilePath": "app/build/bin/java/classes/androidx/activity/R$layout.class"
+        }
+    ]
+}
