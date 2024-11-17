@@ -16,7 +16,7 @@ jobs:
     - name: Set up JDK 11 (Required for Android)
       uses: actions/setup-java@v3
       with:
-        java-version: '11'  # JDK version (ensure this matches your project's requirements)
+        java-version: '8'  # JDK version (ensure this matches your project's requirements)
 
     - name: Set up Android SDK
       uses: android-actions/setup-android@v2
