@@ -13,12 +13,24 @@ android {
         versionName "1.0"
     }
 
+    signingConfigs {
+        release {
+            // Configure your keystore file
+            storeFile file("BluePong.keystore") // Replace with your keystore file name
+            storePassword "Pass@123" // Replace with your keystore password
+            keyAlias "BluePongKey" // Replace with your key alias
+            keyPassword "Pass@123" // Replace with your key password
+        }
+    }
+
     buildTypes {
         release {
+            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -26,6 +38,6 @@ android {
 }
 
 dependencies {
-	// NOTE: CodeAssist does NOT support adding dependencies here, 
-	// use the library manager instead
+    // NOTE: CodeAssist does NOT support adding dependencies here, 
+    // use the library manager instead
 }
